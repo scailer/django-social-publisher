@@ -29,7 +29,7 @@ setup(
         u'users attached with django-social-auth.'
     ).encode('utf8'),
 
-    requires=['django (>= 1.5)', 'django-social-auth'],
+    requires=['django (>= 1.5)', 'django_social_auth (>=0.7)'],
 
     classifiers=(
         'Development Status :: 5 - Production/Stable',
