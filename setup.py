@@ -1,13 +1,6 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from distutils.core import setup
-
-for cmd in ('egg_info', 'develop'):
-    import sys
-    if cmd in sys.argv:
-        from setuptools import setup
-
+from setuptools import setup
 import sys
 reload(sys).setdefaultencoding("UTF-8")
 
@@ -18,7 +11,11 @@ setup(
     author_email='scailer@russia.ru',
 
     include_package_data=True,
-    packages=['social_publisher'],
+    packages=[
+        'social_publisher',
+        'social_publisher.backends',
+        'social_publisher.handlers'
+    ],
 
     url='https://github.com/scailer/django-social-publisher/',
     license='MIT license',
@@ -29,7 +26,9 @@ setup(
         u'users attached with django-social-auth.'
     ).encode('utf8'),
 
-    requires=['django (>= 1.5)', 'django_social_auth (>=0.7)'],
+    install_requires=[
+        'django-social-auth>=0.7'
+    ],
 
     classifiers=(
         'Development Status :: 5 - Production/Stable',
