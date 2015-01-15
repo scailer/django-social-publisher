@@ -1,12 +1,11 @@
-from django.conf.urls import patterns, include, url
-
 from django.contrib import admin
+from django.conf.urls import patterns, include, url
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'test_project.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-
+    url(r'^$', 'test_app.views.user'),
     url(r'^admin/', include(admin.site.urls)),
-)
+    url(r'^social_auth/', include('social_auth.urls')),
+    url(r'^logout/$', 'django.contrib.auth.views.logout'),
+) + staticfiles_urlpatterns()

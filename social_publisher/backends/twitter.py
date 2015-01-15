@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from twython import Twython, TwythonAuthError
+from social_publisher.twython import Twython, TwythonAuthError
 from django.conf import settings
 from django.http import QueryDict
 from . import base
