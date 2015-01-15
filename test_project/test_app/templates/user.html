@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <title>Test</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <p>
+            {{ user }} {% if user.is_authenticated %} | <a href="/logout/?next=/">Logout</a>{% endif %}
+        </p>
+        <hr>
+        <ul>
+            <li><a href="/social_auth/login/twitter/">Twitter</a></li>
+            <li><a href="/social_auth/login/google-oauth2/">Google</a></li>
+            <li><a href="/social_auth/login/facebook/">Facebook</a></li>
+            <li><a href="/social_auth/login/vk-oauth/">Vkontakte</a></li>
+        </ul>
+    </body>
+</html>

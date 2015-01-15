@@ -28,3 +28,6 @@ mithril_static
 .coverage
 utils/color.mtx
 /wiki/*
+test_project/db.sqlite3
+test_project/project/secret.py
+test_project/env/
