@@ -4,5 +4,5 @@ from django.contrib.auth.models import AbstractUser
 from social_publisher import mixins
 
 
-class User(AbstractUser, mixins.SocialPublicForUserMixin):
+class User(AbstractUser, mixins.PublisherForUserMixin):
     pass

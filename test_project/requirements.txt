@@ -1,4 +1,5 @@
 git+https://github.com/scailer/django-social-publisher
 requests-facebook
+sorl-thumbnail
 twython
 vk

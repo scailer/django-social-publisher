@@ -84,3 +84,20 @@ TWITTER_SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
 FACEBOOK_PROFILE_EXTRA_PARAMS = {'locale': 'en_US'}
 FACEBOOK_SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
 FACEBOOK_EXTENDED_PERMISSIONS = ['email', 'publish_actions']
+
+PUBLISHER_BACKENDS = (
+    'social_publisher.backends.twitter.TwitterBackend',
+    'social_publisher.backends.twitter.TwitterWithMediaBackend',
+    'social_publisher.backends.facebook.FacebookBackend',
+    'social_publisher.backends.facebook.FacebookPostImageBackend',
+#    'social_publisher.backends.vk.VKImageToWallBackend',
+)
+PUBLISHER_HANDLERS = {
+    'twitter':              'social_publisher.handlers.twitter.TwitterHandler',
+    'twitter_with_media':   'social_publisher.handlers.twitter.TwitterWithMediaHandler',
+    'facebook':             'social_publisher.handlers.facebook.FacebookMessageHandler',
+    'facebook_post_image':  'social_publisher.handlers.facebook.FacebookPhotoHandler',
+#    'vk_image_to_wall':     'social_publisher.handlers.vk.VKImageToWallHandler'
+}
+
+PUBLISHER_DEFAULT_HANDLER = 'social_publisher.handlers.default.DefaultHandler'
