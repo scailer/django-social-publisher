@@ -23,7 +23,7 @@ class FacebookLinkHandler(FacebookMessageHandler):
                 obj.picture, '128x128', crop='center').url,
             'name': comment or obj.title,
             'caption': obj.title,
-            'description': u'{} / {} via #comixon {}'.format(
+            'description': u'{} / {} via #servicename {}'.format(
                 comment or obj.title, obj.user.get_full_name(),
                 obj.time_created.strftime('%d %b %Y'))
         }

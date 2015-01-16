@@ -12,7 +12,7 @@ class TwitterHandler(default.DefaultHandler):
         }
 
     def post_handle(self, result):
-        return result['entities']['media'][0]['expanded_url'], result
+        return 'https://twitter.com/{}'.format(result['user']['screen_name']), result
 
     def exception_handle(self, e, backend):
         pass
@@ -26,3 +26,6 @@ class TwitterWithMediaHandler(TwitterHandler):
             'media': obj.picture.file,
             'status': title[:110] + postfix,
         }
+
+    def post_handle(self, result):
+        return result['entities']['media'][0]['expanded_url'], result
