@@ -2,7 +2,10 @@
 
 from django.conf import settings
 
-SOCIAL_PUBLIC_DEBUG = getattr(settings, 'SOCIAL_PUBLIC_DEBUG', True)
-SOCIAL_PUBLIC_BACKENDS = getattr(settings, 'SOCIAL_PUBLIC_BACKENDS', [])
-SOCIAL_PUBLIC_HANDLERS = getattr(settings, 'SOCIAL_PUBLIC_HANDLERS', {})
-SOCIAL_PUBLIC_LOGGER_NAME = getattr(settings, 'SOCIAL_PUBLIC_LOGGER_NAME', 'publisher')
+PUBLISHER_DEBUG = getattr(settings, 'PUBLISHER_DEBUG', True)
+PUBLISHER_BACKENDS = getattr(settings, 'PUBLISHER_BACKENDS', [])
+PUBLISHER_HANDLERS = getattr(settings, 'PUBLISHER_HANDLERS', {})
+PUBLISHER_LOGGER_NAME = getattr(settings, 'PUBLISHER_LOGGER_NAME', 'publisher')
+PUBLISHER_DEFAULT_HANDLER = getattr(
+    settings, 'PUBLISHER_DEFAULT_HANDLER',
+    'utils.social_public.handlers.default.DefaultHandler')

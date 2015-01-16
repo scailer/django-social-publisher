@@ -5,18 +5,18 @@ from .exceptions import SocialUserDoesNotExist
 from . import conf, misc
 
 
-class SocialPublicCore(misc.Singleton):
+class PublisherCore(misc.Singleton):
     def __init__(self):
         self.load_backends()
         self.load_handlers()
 
     def load_backends(self):
-        bckds = [_load(mod) for mod in conf.SOCIAL_PUBLIC_BACKENDS]
+        bckds = [_load(mod) for mod in conf.PUBLISHER_BACKENDS]
         self.backends = {backend.name: backend for backend in bckds}
         self.auth_provider_map = {backend.name: backend.auth_provider for backend in bckds}
 
     def load_handlers(self):
-        hndls = conf.SOCIAL_PUBLIC_HANDLERS.items()
+        hndls = conf.PUBLISHER_HANDLERS.items()
         self.handlers = {key: _load(mod) for key, mod in hndls}
 
     def find_backend(self, provider):

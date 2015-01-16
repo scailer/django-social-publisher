@@ -3,7 +3,7 @@
 from . import core
 from . import misc
 
-_core = core.SocialPublicCore()
+_core = core.PublisherCore()
 
 
 class Catcher(object):
@@ -21,7 +21,7 @@ class Catcher(object):
         return misc._safe_call(_publish)
 
 
-class SocialPublicForUserMixin(object):
+class PublisherForUserMixin(object):
     @property
     def publish(self, comment=None):
         return Catcher(user=self, comment=comment)

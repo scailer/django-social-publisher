@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
-from django.conf import settings
 from django.utils.module_loading import import_by_path as _load
 from .exceptions import ExternalAPIError
+from social_publisher import conf
 
 
 class BaseBackend(object):
     name = 'base'
-    default_handler = _load(settings.SOCIAL_PUBLIC_DEFAULT_HANDLER)
+    default_handler = _load(conf.PUBLISHER_DEFAULT_HANDLER)
     exceptions = ()
 
     def __init__(self, social_user, context):

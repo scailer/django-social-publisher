@@ -3,7 +3,7 @@
 import logging
 from . import conf
 
-logger = logging.getLogger(conf.SOCIAL_PUBLIC_LOGGER_NAME)
+logger = logging.getLogger(conf.PUBLISHER_LOGGER_NAME)
 
 
 def _safe_call(func):
@@ -12,7 +12,7 @@ def _safe_call(func):
             return func(*args, **kwargs)
 
         except Exception as e:
-            if conf.SOCIAL_PUBLIC_DEBUG:
+            if conf.PUBLISHER_DEBUG:
                 raise
 
             logger.error('FAIL %s: %s', func,
