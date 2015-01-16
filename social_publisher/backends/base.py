@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.utils.module_loading import import_by_path as _load
-from .exceptions import ExternalAPIError
+from social_publisher.exceptions import ExternalAPIError
 from social_publisher import conf
 
 
