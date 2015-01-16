@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from social_publisher.twython import Twython, TwythonAuthError
+from social_publisher import twython
 from django.conf import settings
 from django.http import QueryDict
 from . import base
@@ -9,12 +9,12 @@ from . import base
 class TwitterBackend(base.BaseBackend):
     name = 'twitter'
     auth_provider = 'twitter'
-    exceptions = (TwythonAuthError,)
+    exceptions = (twython.TwythonAuthError,)
 
     def get_api(self, social_user):
         data = QueryDict(social_user.extra_data['access_token'])
 
-        twitter = Twython(
+        twitter = twython.Twython(
             settings.TWITTER_CONSUMER_KEY,
             settings.TWITTER_CONSUMER_SECRET,
             data['oauth_token'],
