@@ -18,6 +18,8 @@ class TwitterHandler(default.DefaultHandler):
         pass
 
 
+# Example
+
 class TwitterWithMediaHandler(TwitterHandler):
     def pre_handle(self, obj, comment):
         title = comment or obj.title

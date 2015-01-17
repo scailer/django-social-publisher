@@ -16,7 +16,7 @@ class FacebookBackend(base.BaseBackend):
             message: str
             attachment: {name, link, caption, description, picture}
         """
-        def _post(self, **kwargs):
+        def _post(**kwargs):
             return self.get_api(social_user).post('me/feed', params=kwargs)
 
         return _post

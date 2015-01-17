@@ -15,6 +15,8 @@ class FacebookMessageHandler(default.DefaultHandler):
         pass
 
 
+# Example
+
 class FacebookLinkHandler(FacebookMessageHandler):
     def pre_handle(self, obj, comment):
         return {
