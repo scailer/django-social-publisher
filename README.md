@@ -1,8 +1,13 @@
 django_social_publisher
 =======================
 
-Extention for django-social-auth [https://pypi.python.org/pypi/django-social-auth/] 
-that add ability to create posts in social nets from user.
+Extension for django-social-auth [https://pypi.python.org/pypi/django-social-auth/] 
+that add ability to create posts in social nets from registered user directly.
+
+Module contains pluggable system of social-nets backends and handlers for adapt 
+user content to social nets API format.
+
+For writing you own haandlers, see examples in source code.
 
 
 ## START ##
@@ -58,6 +63,7 @@ PUBLISHER_BACKENDS = (
 )
 
 PUBLISHER_HANDLERS = {
+    # '<provider_name>': 'you.handler.MyHandler'
     'twitter': 'social_publisher.handlers.twitter.TwitterHandler',
     'twitter_with_media': 'social_publisher.handlers.twitter.TwitterWithMediaHandler',
     ...
@@ -97,6 +103,7 @@ PUBLISHER_BACKENDS = (
 )
 
 PUBLISHER_HANDLERS = {
+    # '<provider_name>': 'you.handler.MyHandler'
     'facebook':     'social_publisher.handlers.facebook.FacebookMessageHandler',
     'facebook_post_image': 'social_publisher.handlers.facebook.FacebookPhotoHandler',
     ...
@@ -125,5 +132,5 @@ project/settings.py
 ```python
 PUBLISHER_DEFAULT_HANDLER = 'social_publisher.handlers.default.DefaultHandler'
 PUBLISHER_LOGGER_NAME = 'my_logger'
-PUBLISHER_PUBLIC_DEBUG = True
+PUBLISHER_PUBLIC_DEBUG = True  # if False, errors fails silently and writes log
 ```

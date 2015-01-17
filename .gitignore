@@ -31,3 +31,6 @@ utils/color.mtx
 test_project/db.sqlite3
 test_project/project/secret.py
 test_project/env/
+dist/*
+*.egg-info/*
+*.json
