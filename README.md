@@ -10,7 +10,7 @@ user content to social nets API format.
 For writing you own haandlers, see examples in source code.
 
 
-## START ##
+### Start ###
 
 ```sh
 $ pip install django_social_publisher
@@ -126,7 +126,7 @@ user1.publish.facebook_post_image(obj)  # obj - you data for you custom handler
 ```
 
 
-## Extra settings ##
+### Extra settings ###
 
 project/settings.py
 ```python
@@ -134,3 +134,6 @@ PUBLISHER_DEFAULT_HANDLER = 'social_publisher.handlers.default.DefaultHandler'
 PUBLISHER_LOGGER_NAME = 'my_logger'
 PUBLISHER_PUBLIC_DEBUG = True  # if False, errors fails silently and writes log
 ```
+
+---
+The author brings apologies for my english.
