@@ -22,7 +22,8 @@ setup(
     packages=[
         'social_publisher',
         'social_publisher.backends',
-        'social_publisher.handlers'
+        'social_publisher.handlers',
+        'social_publisher.auth'
     ],
 
     url='https://github.com/scailer/django-social-publisher/',
