@@ -61,6 +61,7 @@ AUTHENTICATION_BACKENDS = (
     'social_auth.backends.contrib.vk.VKOAuth2Backend',  # vk-oauth
     'social_auth.backends.twitter.TwitterBackend',      # twitter
     'social_auth.backends.facebook.FacebookBackend',    # facebook
+    'social_publisher.auth.vk.VKStandaloneBackend',     # vk-standalone
 )
 
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
@@ -90,14 +91,14 @@ PUBLISHER_BACKENDS = (
     'social_publisher.backends.twitter.TwitterWithMediaBackend',
     'social_publisher.backends.facebook.FacebookBackend',
     'social_publisher.backends.facebook.FacebookPostImageBackend',
-#    'social_publisher.backends.vk.VKImageToWallBackend',
+    'social_publisher.backends.vk.VKImageToWallBackend',
 )
 PUBLISHER_HANDLERS = {
     'twitter':              'social_publisher.handlers.twitter.TwitterHandler',
     'twitter_with_media':   'social_publisher.handlers.twitter.TwitterWithMediaHandler',
     'facebook':             'social_publisher.handlers.facebook.FacebookMessageHandler',
     'facebook_post_image':  'social_publisher.handlers.facebook.FacebookPhotoHandler',
-#    'vk_image_to_wall':     'social_publisher.handlers.vk.VKImageToWallHandler'
+    'vk_image_to_wall':     'social_publisher.handlers.vk.VKImageToWallHandler'
 }
 
 PUBLISHER_DEFAULT_HANDLER = 'social_publisher.handlers.default.DefaultHandler'
