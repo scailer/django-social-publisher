@@ -8,4 +8,4 @@ PUBLISHER_HANDLERS = getattr(settings, 'PUBLISHER_HANDLERS', {})
 PUBLISHER_LOGGER_NAME = getattr(settings, 'PUBLISHER_LOGGER_NAME', 'publisher')
 PUBLISHER_DEFAULT_HANDLER = getattr(
     settings, 'PUBLISHER_DEFAULT_HANDLER',
-    'utils.social_public.handlers.default.DefaultHandler')
+    'social_publisher.handlers.default.DefaultHandler')
