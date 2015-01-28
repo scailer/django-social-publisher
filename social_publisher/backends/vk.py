@@ -33,7 +33,7 @@ class VKBackend(base.BaseBackend):
 
 class VKImageToWallBackend(VKBackend):
     name = 'vk_image_to_wall'
-    auth_provider = 'vk-oauth'
+    auth_provider = 'vk-standalone'
 
     def get_api_publisher(self, social_user):
         """
