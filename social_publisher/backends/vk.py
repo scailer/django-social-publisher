@@ -43,12 +43,21 @@ class VKImageToWallBackend(VKBackend):
 
         def _post(**kwargs):
             api = self.get_api(social_user)
-            server_data = api.photos.getWallUploadServer()
-            upload_data = requests.post(server_data['upload_url'],
-                                        files=kwargs['files']).json()
+            author = {
+                'group_id': kwargs.get('group_id'),
+                'user_id': kwargs.get('user_id'),
+            }
+            server_data = api.photos.getWallUploadServer(**author)
+            attachments = []
 
-            photos_data = api.photos.saveWallPhoto(**upload_data)
-            kwargs['attachments'] = 'photo{owner_id}_{id}'.format(**photos_data[0])
+            for _file in kwargs['files']:
+                upload_data = requests.post(
+                    server_data['upload_url'], files={"photo": _file}).json()
+                upload_data.update(author)
+                photos_data = api.photos.saveWallPhoto(**upload_data)
+                attachments.append('photo{owner_id}_{id}'.format(**photos_data[0]))
+
+            kwargs['attachments'] = ','.join(attachments)
             response = api.wall.post(**kwargs)
 
             server_data.update(response)
