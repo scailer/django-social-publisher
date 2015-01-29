@@ -33,7 +33,7 @@ class PublisherCore(misc.Singleton):
             raise SocialUserDoesNotExist()
 
         Backend = self.find_backend(provider)
-        context.update({'core': self})
+        context.update({'core': self, 'user': user, 'provider': provider})
         return Backend(social_user, context=context)
 
     def find_social_user(self, user, provider):

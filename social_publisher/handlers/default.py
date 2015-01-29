@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.utils.encoding import smart_unicode
-from misc import logger
+from social_publisher.misc import logger
 
 
 class DefaultHandler(object):
