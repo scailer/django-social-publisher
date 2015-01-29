@@ -3,7 +3,7 @@
 import requests
 from django.conf import settings
 from social_publisher import vk
-from . import base
+from social_publisher.backends import base
 
 
 class VKBackend(base.BaseBackend):

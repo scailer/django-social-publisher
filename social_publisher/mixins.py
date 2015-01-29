@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from . import core
-from . import misc
+from social_publisher import core, misc
 
 _core = core.PublisherCore()
 

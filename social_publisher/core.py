@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from django.utils.module_loading import import_by_path as _load
-from .exceptions import SocialUserDoesNotExist
-from . import conf, misc
+from social_publisher.exceptions import SocialUserDoesNotExist
+from social_publisher import conf, misc
 
 
 class PublisherCore(misc.Singleton):

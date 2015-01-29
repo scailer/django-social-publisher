@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from social_publisher import facebook
-from . import base
+from social_publisher.backends import base
 
 
 class FacebookBackend(base.BaseBackend):

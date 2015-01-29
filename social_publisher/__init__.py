@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from . import conf
+from social_publisher import conf
 
 if any('facebook' in x for x in conf.PUBLISHER_BACKENDS):
     import facebook

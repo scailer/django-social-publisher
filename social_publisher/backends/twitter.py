@@ -3,7 +3,7 @@
 from social_publisher import twython
 from django.conf import settings
 from django.http import QueryDict
-from . import base
+from social_publisher.backends import base
 
 
 class TwitterBackend(base.BaseBackend):

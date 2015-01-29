@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import logging
-from . import conf
+from social_publisher import conf
 
 logger = logging.getLogger(conf.PUBLISHER_LOGGER_NAME)
 

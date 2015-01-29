@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from . import default
+from social_publisher.handlers import default
 
 
 class VKImageToWallHandler(default.DefaultHandler):
