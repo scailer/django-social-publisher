@@ -48,7 +48,8 @@ class BaseBackend(object):
                 response = self.publisher(*args, **kwargs)
 
         except self.exceptions, e:
-            handler.exception_handle(e, backend=self)
+            handler.exception_handle(e, data=data, obj=obj, comment=comment)
             raise ExternalAPIError()
 
-        return handler.post_handle(response)
+        return handler.post_handle(
+            response, data=data, obj=obj, comment=comment)

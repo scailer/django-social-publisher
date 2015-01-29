@@ -8,11 +8,8 @@ class FacebookMessageHandler(default.DefaultHandler):
     def pre_handle(self, obj, comment):
         return {'message': comment or unicode(obj)}
 
-    def post_handle(self, result):
+    def post_handle(self, result, data, obj, comment):
         return 'http://facebook.com/{}'.format(result['id']), result
-
-    def exception_handle(self, e, backend):
-        pass
 
 
 # Example

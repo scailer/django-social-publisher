@@ -11,11 +11,8 @@ class TwitterHandler(default.DefaultHandler):
             'status': title[:110] + postfix,
         }
 
-    def post_handle(self, result):
+    def post_handle(self, result, data, obj, comment):
         return 'https://twitter.com/{}'.format(result['user']['screen_name']), result
-
-    def exception_handle(self, e, backend):
-        pass
 
 
 # Example
@@ -29,5 +26,5 @@ class TwitterWithMediaHandler(TwitterHandler):
             'status': title[:110] + postfix,
         }
 
-    def post_handle(self, result):
+    def post_handle(self, result, data, obj, comment):
         return result['entities']['media'][0]['expanded_url'], result

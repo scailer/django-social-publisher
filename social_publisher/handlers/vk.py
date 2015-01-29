@@ -8,9 +8,6 @@ class VKImageToWallHandler(default.DefaultHandler):
         obj.picture.file.seek(0)
         return {'files': {'file0': obj.picture.file}}
 
-    def post_handle(self, result):
+    def post_handle(self, result, data, obj, comment):
         url = 'http://vk.com/wall{user_id}_{post_id}'.format(**result)
         return url, result
-
-    def exception_handle(self, e, backend):
-        pass
