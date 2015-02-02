@@ -3,6 +3,7 @@
 from django.utils.module_loading import import_by_path as _load
 from social_publisher.exceptions import SocialUserDoesNotExist
 from social_publisher import conf, misc
+from social_auth.models import UserSocialAuth
 
 
 class PublisherCore(misc.Singleton):
@@ -26,14 +27,13 @@ class PublisherCore(misc.Singleton):
             raise KeyError('provider must choose value from: {}'.format(
                 ', '.join(self.backends.keys())))
 
-    def get_backend(self, user, provider, context):
-        social_user = self.find_social_user(user, provider)
-
-        if not social_user:
-            raise SocialUserDoesNotExist()
-
+    def get_backend(self, social_user, provider, context):
         Backend = self.find_backend(provider)
-        context.update({'core': self, 'user': user, 'provider': provider})
+        context.update({
+            'core': self,
+            'provider': provider,
+            'user': social_user.user,
+        })
         return Backend(social_user, context=context)
 
     def find_social_user(self, user, provider):
@@ -41,4 +41,20 @@ class PublisherCore(misc.Singleton):
         return user.social_auth.filter(provider=provider).first()
 
     def publish(self, user, provider, obj, comment, **kwargs):
-        return self.get_backend(user, provider, context=kwargs).publish(obj, comment)
+        '''
+            user - django User or UserSocialAuth instance
+            provider - name of publisher provider
+            obj - sharing object
+            comment - string
+        '''
+
+        if isinstance(user, UserSocialAuth):
+            social_user = user
+        else:
+            social_user = self.find_social_user(user, provider)
+
+        if not social_user:
+            raise SocialUserDoesNotExist()
+
+        backend = self.get_backend(social_user, provider, context=kwargs)
+        return backend.publish(obj, comment)

@@ -30,5 +30,9 @@ class PublisherForUserMixin(object):
     def publish(self):
         return Catcher(user=self)
 
+    @property
+    def publisher():
+        return _core
+
     def publish_to(self, provider, obj, comment=None, **kw):
         return _core.publish(self, provider, obj, comment, **kw)
