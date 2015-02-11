@@ -11,6 +11,8 @@ class VKStandaloneBackend(VKOAuth2Backend):
 class VKStandaloneAuth(VKOAuth2):
     name = 'vk-standalone'
     AUTH_BACKEND = VKStandaloneBackend
+    SETTINGS_KEY_NAME = 'VK_STANDALONE_APP_ID'
+    SETTINGS_SECRET_NAME = 'VK_STANDALONE_API_SECRET'
 
     def get_scope(self):
         scope = super(VKStandaloneAuth, self).get_scope()
