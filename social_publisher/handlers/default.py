@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import traceback
+from django.core.mail import mail_admins
 from django.utils.encoding import smart_unicode
 from social_publisher.misc import logger
 
@@ -17,3 +19,8 @@ class DefaultHandler(object):
 
     def exception_handle(self, e, data, obj, comment):
         logger.error(str(e))
+        subj = u'PUBLISHING ERROR {}: {}#{} [{}] by {}'.format(
+            str(e), obj, obj.pk, self.backend.name, self.context.get('user'))
+        message = u'Traceback:\n{}\n\n Data:\n{}\n Comment:\n{}'.format(
+            traceback.format_exc(), data, comment)
+        mail_admins(subj, message, fail_silently=True)
