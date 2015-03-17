@@ -31,7 +31,11 @@ class FacebookPostImageBackend(FacebookBackend):
             message: str
             attachment: {name, link, caption, description, picture}
         """
-        def _post(**kwargs):
-            return self.get_api(social_user).post('me/photos', params=kwargs)
+        def _post(object_id=None, **kwargs):
+            object_id = object_id or 'me'
+            return self.get_api(social_user).post(
+                '{}/photos'.format(object_id),
+                params=kwargs
+            )
 
         return _post
