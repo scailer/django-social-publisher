@@ -23,7 +23,8 @@ class FacebookBackend(base.BaseBackend):
 
             if image:
                 res = self.get_api(social_user).post(
-                    '{}/photos'.format(owner_id), image=image)
+                    '{}/photos'.format(owner_id),
+                    params={'image': image})
                 kwargs['object_attachment'] = res['id']
 
             return self.get_api(social_user).post(
