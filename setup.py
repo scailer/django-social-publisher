@@ -14,7 +14,7 @@ For writing you own haandlers, see examples in source code.
 
 setup(
     name='django-social-publisher',
-    version='0.1.16',
+    version='0.1.17',
     author='Dmitriy Vlasov',
     author_email='scailer@russia.ru',
 
