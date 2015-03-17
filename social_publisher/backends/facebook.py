@@ -13,13 +13,21 @@ class FacebookBackend(base.BaseBackend):
 
     def get_api_publisher(self, social_user):
         """
-            message: str
-            attachment: {name, link, caption, description, picture}
+            message: <str>
+            image: <file> as object_attachment
+            owner_id: <str>
         """
-        def _post(object_id=None, **kwargs):
-            object_id = object_id or 'me'
+        def _post(owner_id=None, **kwargs):
+            owner_id = owner_id or 'me'
+            image = kwargs.get('image')
+
+            if image:
+                res = self.get_api(social_user).post(
+                    '{}/photos'.format(owner_id), image=image)
+                kwargs['object_attachment'] = res['id']
+
             return self.get_api(social_user).post(
-                '{}/feed'.format(object_id),
+                '{}/feed'.format(owner_id),
                 params=kwargs
             )
 
@@ -32,13 +40,14 @@ class FacebookPostImageBackend(FacebookBackend):
 
     def get_api_publisher(self, social_user):
         """
-            message: str
-            attachment: {name, link, caption, description, picture}
+            message: <str>
+            image: <file>
+            owner_id: <str>
         """
-        def _post(object_id=None, **kwargs):
-            object_id = object_id or 'me'
+        def _post(owner_id=None, **kwargs):
+            owner_id = owner_id or 'me'
             return self.get_api(social_user).post(
-                '{}/photos'.format(object_id),
+                '{}/photos'.format(owner_id),
                 params=kwargs
             )
 
