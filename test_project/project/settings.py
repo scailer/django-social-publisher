@@ -17,7 +17,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'test_app',
-    'social_auth',
+    'social',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -57,10 +57,10 @@ SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 
 # Social
 AUTHENTICATION_BACKENDS = (
-    'social_auth.backends.google.GoogleOAuth2Backend',  # google-oauth
-    'social_auth.backends.contrib.vk.VKOAuth2Backend',  # vk-oauth
-    'social_auth.backends.twitter.TwitterBackend',      # twitter
-    'social_auth.backends.facebook.FacebookBackend',    # facebook
+    'social.backends.google.GoogleOAuth2Backend',  # google-oauth
+    'social.backends.contrib.vk.VKOAuth2Backend',  # vk-oauth
+    'social.backends.twitter.TwitterBackend',      # twitter
+    'social.backends.facebook.FacebookBackend',    # facebook
     'social_publisher.auth.vk.VKStandaloneBackend',     # vk-standalone
 )
 

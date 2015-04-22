@@ -32,7 +32,7 @@ setup(
     long_description=DESCRIPTION,
 
     install_requires=[
-        'django-social-auth>=0.7'
+        'python-social-auth>=0.2'
     ],
 
     classifiers=(

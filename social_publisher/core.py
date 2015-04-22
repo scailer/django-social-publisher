@@ -3,7 +3,7 @@
 from django.utils.module_loading import import_by_path as _load
 from social_publisher.exceptions import SocialUserDoesNotExist
 from social_publisher import conf, misc
-from social_auth.models import UserSocialAuth
+from social.models import UserSocialAuth
 
 
 class PublisherCore(misc.Singleton):

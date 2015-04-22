@@ -1,7 +1,7 @@
 django_social_publisher
 =======================
 
-Extension for django-social-auth [https://pypi.python.org/pypi/django-social-auth/] 
+Extension for python-social-auth [https://pypi.python.org/pypi/python-social-auth/] 
 that add ability to create posts in social nets from registered user directly.
 
 Module contains pluggable system of social-nets backends and handlers for adapt 
@@ -20,7 +20,7 @@ project/settings.py
 ```python
 INSTALLED_APPS = (
     ...
-    'social_auth',
+    'social',
 )
 
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
@@ -52,7 +52,7 @@ $ pip install twython
 project/settings.py
 ```python
 AUTHENTICATION_BACKENDS = (
-    'social_auth.backends.twitter.TwitterBackend',      # twitter
+    'social.backends.twitter.TwitterBackend',      # twitter
     ...
 )
 
@@ -92,7 +92,7 @@ $ pip install requests-facebook sorl-thumbnail
 project/settings.py
 ```python
 AUTHENTICATION_BACKENDS = (
-    'social_auth.backends.facebook.FacebookBackend',    # facebook
+    'social.backends.facebook.FacebookBackend',    # facebook
     ...
 )
 
