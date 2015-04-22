@@ -2,7 +2,6 @@
 
 from social_publisher import twython
 from django.conf import settings
-from django.http import QueryDict
 from social_publisher.backends import base
 
 
@@ -12,16 +11,12 @@ class TwitterBackend(base.BaseBackend):
     exceptions = (twython.TwythonAuthError,)
 
     def get_api(self, social_user):
-        data = QueryDict(social_user.extra_data['access_token'])
-
-        twitter = twython.Twython(
-            settings.TWITTER_CONSUMER_KEY,
-            settings.TWITTER_CONSUMER_SECRET,
-            data['oauth_token'],
-            data['oauth_token_secret']
+        return twython.Twython(
+            settings.SOCIAL_AUTH_TWITTER_KEY,
+            settings.SOCIAL_AUTH_TWITTER_SECRET,
+            social_user.extra_data['access_token']['oauth_token'],
+            social_user.extra_data['access_token']['oauth_token_secret']
         )
-
-        return twitter
 
     def get_api_publisher(self, social_user):
         return self.get_api(social_user).update_status

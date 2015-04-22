@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from django.utils.module_loading import import_by_path as _load
+from social.apps.django_app.default.models import UserSocialAuth
 from social_publisher.exceptions import SocialUserDoesNotExist
 from social_publisher import conf, misc
-from social.models import UserSocialAuth
 
 
 class PublisherCore(misc.Singleton):

@@ -6,6 +6,6 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^$', 'test_app.views.user'),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^social_auth/', include('social_auth.urls')),
+    url(r'^social_auth/', include('social.apps.django_app.urls', namespace='social')),
     url(r'^logout/$', 'django.contrib.auth.views.logout'),
 ) + staticfiles_urlpatterns()

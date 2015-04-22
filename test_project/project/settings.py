@@ -17,7 +17,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'test_app',
-    'social',
+    'social.apps.django_app.default',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -57,11 +57,11 @@ SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 
 # Social
 AUTHENTICATION_BACKENDS = (
-    'social.backends.google.GoogleOAuth2Backend',  # google-oauth
-    'social.backends.contrib.vk.VKOAuth2Backend',  # vk-oauth
-    'social.backends.twitter.TwitterBackend',      # twitter
-    'social.backends.facebook.FacebookBackend',    # facebook
-    'social_publisher.auth.vk.VKStandaloneBackend',     # vk-standalone
+    'social.backends.google.GoogleOAuth2',  # google-oauth
+#    'social.backends.contrib.vk.VKOAuth2',  # vk-oauth
+    'social.backends.twitter.TwitterOAuth',      # twitter
+    'social.backends.facebook.Facebook2OAuth2',    # facebook
+#    'social_publisher.auth.vk.VKStandaloneBackend',     # vk-standalone
 )
 
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
@@ -91,14 +91,14 @@ PUBLISHER_BACKENDS = (
     'social_publisher.backends.twitter.TwitterWithMediaBackend',
     'social_publisher.backends.facebook.FacebookBackend',
     'social_publisher.backends.facebook.FacebookPostImageBackend',
-    'social_publisher.backends.vk.VKImageToWallBackend',
+#    'social_publisher.backends.vk.VKImageToWallBackend',
 )
 PUBLISHER_HANDLERS = {
     'twitter':              'social_publisher.handlers.twitter.TwitterHandler',
     'twitter_with_media':   'social_publisher.handlers.twitter.TwitterWithMediaHandler',
     'facebook':             'social_publisher.handlers.facebook.FacebookMessageHandler',
     'facebook_post_image':  'social_publisher.handlers.facebook.FacebookPhotoHandler',
-    'vk_image_to_wall':     'social_publisher.handlers.vk.VKImageToWallHandler'
+#    'vk_image_to_wall':     'social_publisher.handlers.vk.VKImageToWallHandler'
 }
 
 PUBLISHER_DEFAULT_HANDLER = 'social_publisher.handlers.default.DefaultHandler'

@@ -3,7 +3,7 @@
 from setuptools import setup
 
 DESCRIPTION = """
-Extension for django-social-auth [https://pypi.python.org/pypi/django-social-auth/]
+Extension for python-social-auth [https://pypi.python.org/pypi/python-social-auth/]
 that add ability to create posts in social nets from registered user directly.
 
 Module contains pluggable system of social-nets backends and handlers for adapt
@@ -14,7 +14,7 @@ For writing you own haandlers, see examples in source code.
 
 setup(
     name='django-social-publisher',
-    version='0.1.18',
+    version='0.2.0',
     author='Dmitriy Vlasov',
     author_email='scailer@russia.ru',
 
