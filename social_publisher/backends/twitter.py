@@ -31,6 +31,7 @@ class TwitterWithMediaBackend(TwitterBackend):
 
         def _func(media, status=''):
             media_data = api.upload_media(media=media)
-            api.update_status(status=status, media_ids=media_data['media_id'])
+            return api.update_status(
+                status=status, media_ids=media_data['media_id'])
 
         return _func
