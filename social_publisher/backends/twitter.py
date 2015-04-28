@@ -27,4 +27,10 @@ class TwitterWithMediaBackend(TwitterBackend):
     auth_provider = 'twitter'
 
     def get_api_publisher(self, social_user):
-        return self.get_api(social_user).update_status_with_media
+        api = self.get_api(social_user)
+
+        def _func(media, status=''):
+            media_data = api.upload_media(media=media)
+            api.update_status(status=status, media_ids=media_data['media_id'])
+
+        return _func
