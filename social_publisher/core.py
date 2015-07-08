@@ -40,14 +40,7 @@ class PublisherCore(misc.Singleton):
         provider = self.auth_provider_map[provider]
         return user.social_auth.filter(provider=provider).first()
 
-    def publish(self, user, provider, obj, comment, **kwargs):
-        '''
-            user - django User or UserSocialAuth instance
-            provider - name of publisher provider
-            obj - sharing object
-            comment - string
-        '''
-
+    def _get_social_user(self, user, provider):
         if isinstance(user, UserSocialAuth):
             social_user = user
         else:
@@ -56,5 +49,20 @@ class PublisherCore(misc.Singleton):
         if not social_user:
             raise SocialUserDoesNotExist()
 
+        return social_user
+
+    def get_api(self, user, provider, **kwargs):
+        social_user = self._get_social_user(user, provider)
+        backend = self.get_backend(social_user, provider, context=kwargs)
+        return backend.get_api(social_user)
+
+    def publish(self, user, provider, obj, comment, **kwargs):
+        '''
+            user - django User or UserSocialAuth instance
+            provider - name of publisher provider
+            obj - sharing object
+            comment - string
+        '''
+        social_user = self._get_social_user(user, provider)
         backend = self.get_backend(social_user, provider, context=kwargs)
         return backend.publish(obj, comment)

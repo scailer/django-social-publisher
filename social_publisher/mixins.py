@@ -34,5 +34,8 @@ class PublisherForUserMixin(object):
     def publisher(self):
         return _core
 
+    def publisher_api(self, provider, **kw):
+        return _core.get_api(self, provider, **kw)
+
     def publish_to(self, provider, obj, comment=None, **kw):
         return _core.publish(self, provider, obj, comment, **kw)
