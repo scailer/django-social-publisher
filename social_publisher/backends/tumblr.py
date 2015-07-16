@@ -29,8 +29,8 @@ class TumblrPhotoBackend(TumblrBaseBackend):
         uid = social_user.uid
 
         def _func(**data):
-            uid = data.get('uid', uid)
+            _uid = data.get('uid', uid)
             data['state'] = data.get('state', 'published')
-            return self.get_api(social_user).create_photo(**data)
+            return self.get_api(social_user).create_photo(_uid, **data)
 
         return _func
