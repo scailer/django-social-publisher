@@ -16,10 +16,11 @@ class PinterestOauth(BaseOAuth1):
     REQUEST_TOKEN_URL = AUTHORIZE_URL
 
     def oauth_authorization_request(self, token):
-        params = {
+        params = self.setting('AUTH_EXTRA_ARGUMENTS', {}).copy()
+        params.update({
             'consumer_id': settings.SOCIAL_AUTH_PINTEREST_KEY,
             'response_type': self.RESPONSE_TYPE,
-        }
+        })
         return '{0}?{1}'.format(self.authorization_url(), urlencode(params))
 
     @handle_http_errors
