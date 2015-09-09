@@ -9,6 +9,10 @@ user content to social nets API format.
 
 For writing you own haandlers, see examples in source code.
 
+Normally works for *twitter*, *facebook* and *tumblr*.
+
+Works with hacks for *VK*, *pinterest*.
+
 
 ### Start ###
 
@@ -20,7 +24,7 @@ project/settings.py
 ```python
 INSTALLED_APPS = (
     ...
-    'social',
+    'social.apps.django_app.default',
 )
 
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
@@ -126,13 +130,110 @@ user1.publish.facebook_post_image(obj)  # obj - you data for you custom handler
 ```
 
 
+### Tumblr ###
+
+```sh
+$ pip install PyTumblr
+```
+
+project/settings.py
+```python
+AUTHENTICATION_BACKENDS = (
+    'social.backends.tumblr.TumblrOAuth',
+    ...
+)
+
+PUBLISHER_BACKENDS = (
+    'social_publisher.backends.tumblr.TumblrPhotoBackend',
+    ...
+)
+
+PUBLISHER_HANDLERS = {
+    'tumblr_photo': 'social_publisher.handlers.tumblr.TumblrPhotoHandler',  # use as example
+    ...
+}
+
+SOCIAL_AUTH_TUMBLR_KEY = 'XXXXXXXXXXXXXXXXXXXXXFSZboiEYvCm3I8HOToVjRNrIgMo6J'
+SOCIAL_AUTH_TUMBLR_SECRET = 'jV173bMZFjvNiybCvdEx6cjITXXXXXXXXXXXXXXXXXXXXXXXXX'
+
+
+### ВКонтакте ###
+
+Works only with hacks, no official way.
+
+Warning! You need catch response from VK on client side, fix it - 
+replace "#" by "?" and send secret keys to the server.
+
+```sh
+$ pip install vk
+```
+
+project/settings.py
+```python
+AUTHENTICATION_BACKENDS = (
+    'social_publisher.auth.vk.VKStandaloneBackend',
+    ...
+)
+
+PUBLISHER_BACKENDS = (
+    'social_publisher.backends.vk.VKImageToWallBackend',
+    ...
+)
+
+PUBLISHER_HANDLERS = {
+    'vk_image_to_wall': 'social_publisher.handlers.vk.VKImageToWallHandler',  # use as example
+    ...
+}
+
+
+### Pinterest ###
+
+Works only with hacks, no official way.
+
+Warning! You need catch response from VK on client side, fix it - 
+replace "#" by "?" and send secret keys to the server.
+
+```sh
+$ pip install requests 
+```
+
+project/settings.py
+```python
+AUTHENTICATION_BACKENDS = (
+    'social_publisher.auth.pinterest.PinterestOauth',
+    ...
+)
+
+PUBLISHER_BACKENDS = (
+    'social_publisher.backends.pinterest.PinterestBackend',
+    ...
+)
+
+PUBLISHER_HANDLERS = {
+    'pinterest': 'social_publisher.handlers.pinterest.PinterestHandler',  # use as example
+    ...
+}
+
+
+SOCIAL_AUTH_PINTEREST_KEY = '1111111'
+SOCIAL_AUTH_PINTEREST_SECRET = 'XXXXc1d1'
+SOCIAL_AUTH_PINTEREST_AUTH_EXTRA_ARGUMENTS = {
+    'no_auto_redirect_or_interstitial': '1'
+}
+
+
+### G+ ###
+
+I don't know ways post to G+
+
+
 ### Extra settings ###
 
 project/settings.py
 ```python
 PUBLISHER_DEFAULT_HANDLER = 'social_publisher.handlers.default.DefaultHandler'
 PUBLISHER_LOGGER_NAME = 'my_logger'
-PUBLISHER_PUBLIC_DEBUG = True  # if False, errors fails silently and writes log
+PUBLISHER_DEBUG = True  # if False, errors fails silently and writes log
 ```
 
 ---
