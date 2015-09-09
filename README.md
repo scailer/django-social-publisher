@@ -152,10 +152,10 @@ PUBLISHER_HANDLERS = {
     'tumblr_photo': 'social_publisher.handlers.tumblr.TumblrPhotoHandler',  # use as example
     ...
 }
-```
 
 SOCIAL_AUTH_TUMBLR_KEY = 'XXXXXXXXXXXXXXXXXXXXXFSZboiEYvCm3I8HOToVjRNrIgMo6J'
 SOCIAL_AUTH_TUMBLR_SECRET = 'jV173bMZFjvNiybCvdEx6cjITXXXXXXXXXXXXXXXXXXXXXXXXX'
+```
 
 
 ### ВКонтакте ###
@@ -184,6 +184,14 @@ PUBLISHER_BACKENDS = (
 PUBLISHER_HANDLERS = {
     'vk_image_to_wall': 'social_publisher.handlers.vk.VKImageToWallHandler',  # use as example
     ...
+}
+
+SOCIAL_AUTH_VK_STANDALONE_APP_ID = '1122334'
+SOCIAL_AUTH_VK_STANDALONE_API_SECRET = 'XXXXXXXXURsWdhXXXXXX'
+SOCIAL_AUTH_VK_STANDALONE_EXTRA_SCOPE = ['wall', 'photos', 'offline']
+SOCIAL_AUTH_VK_STANDALONE_AUTH_EXTRA_ARGUMENTS = {
+    'redirect_uri': 'blank.html',
+    'response_type': 'token',
 }
 ```
 
