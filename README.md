@@ -152,6 +152,7 @@ PUBLISHER_HANDLERS = {
     'tumblr_photo': 'social_publisher.handlers.tumblr.TumblrPhotoHandler',  # use as example
     ...
 }
+```
 
 SOCIAL_AUTH_TUMBLR_KEY = 'XXXXXXXXXXXXXXXXXXXXXFSZboiEYvCm3I8HOToVjRNrIgMo6J'
 SOCIAL_AUTH_TUMBLR_SECRET = 'jV173bMZFjvNiybCvdEx6cjITXXXXXXXXXXXXXXXXXXXXXXXXX'
@@ -184,6 +185,7 @@ PUBLISHER_HANDLERS = {
     'vk_image_to_wall': 'social_publisher.handlers.vk.VKImageToWallHandler',  # use as example
     ...
 }
+```
 
 
 ### Pinterest ###
@@ -220,6 +222,7 @@ SOCIAL_AUTH_PINTEREST_SECRET = 'XXXXc1d1'
 SOCIAL_AUTH_PINTEREST_AUTH_EXTRA_ARGUMENTS = {
     'no_auto_redirect_or_interstitial': '1'
 }
+```
 
 
 ### G+ ###
