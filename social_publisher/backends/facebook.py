@@ -18,8 +18,8 @@ class FacebookBackend(base.BaseBackend):
                                 user_accounts["data"] if x["id"] == owner_id]
                 api = facebook.GraphAPI(access_token[0])
 
-            except (KeyError, IndexError), e:
-                print 'Get owner token failed:', e
+            except (KeyError, IndexError) as e:
+                print('Get owner token failed: {}'.format(e))
 
         return api
 

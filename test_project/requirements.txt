@@ -1,6 +1,8 @@
-django-social-publisher
-requests-facebook
-sorl-thumbnail
 ipython
+django
+sorl-thumbnail
+django-social-publisher
+
+git+https://github.com/michaelhelmick/requests-facebook.git
 twython
 vk

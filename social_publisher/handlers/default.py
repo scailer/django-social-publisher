@@ -2,7 +2,6 @@
 
 import traceback
 from django.core.mail import mail_admins
-from django.utils.encoding import smart_unicode
 from social_publisher.misc import logger
 
 
@@ -12,7 +11,7 @@ class DefaultHandler(object):
         self.context = context
 
     def pre_handle(self, obj, comment):
-        return {'text': comment or smart_unicode(obj)}
+        return {'text': comment or unicode(obj)}
 
     def post_handle(self, result, data, obj, comment):
         return 'http://example.com/', result
