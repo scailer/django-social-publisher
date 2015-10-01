@@ -27,7 +27,7 @@ class BaseBackend(object):
         data = handler.pre_handle(obj, comment)
 
         try:
-            if isinstance(data, (str, unicode)):
+            if isinstance(data, str):
                 response = self.publisher(data)
 
             elif isinstance(data, dict):

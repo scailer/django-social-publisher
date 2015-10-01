@@ -11,15 +11,15 @@ class DefaultHandler(object):
         self.context = context
 
     def pre_handle(self, obj, comment):
-        return {'text': comment or unicode(obj)}
+        return {'text': comment or str(obj)}
 
     def post_handle(self, result, data, obj, comment):
         return 'http://example.com/', result
 
     def exception_handle(self, e, data, obj, comment):
         logger.error(str(e))
-        subj = u'PUBLISHING ERROR {}: {}#{} [{}] by {}'.format(
+        subj = 'PUBLISHING ERROR {}: {}#{} [{}] by {}'.format(
             str(e), obj, obj.pk, self.backend.name, self.context.get('user'))
-        message = u'Traceback:\n{}\n\n Data:\n{}\n Comment:\n{}'.format(
+        message = 'Traceback:\n{}\n\n Data:\n{}\n Comment:\n{}'.format(
             traceback.format_exc(), data, comment)
         mail_admins(subj, message, fail_silently=True)

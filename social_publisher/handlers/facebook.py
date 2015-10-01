@@ -6,7 +6,7 @@ from sorl.thumbnail import get_thumbnail
 
 class FacebookMessageHandler(default.DefaultHandler):
     def pre_handle(self, obj, comment):
-        return {'message': comment or unicode(obj)}
+        return {'message': comment or str(obj)}
 
     def post_handle(self, result, data, obj, comment):
         return 'http://facebook.com/{}'.format(result['id']), result
@@ -22,7 +22,7 @@ class FacebookLinkHandler(FacebookMessageHandler):
                 obj.picture, '128x128', crop='center').url,
             'name': comment or obj.title,
             'caption': obj.title,
-            'description': u'{} / {} via #servicename {}'.format(
+            'description': '{} / {} via #servicename {}'.format(
                 comment or obj.title, obj.user.get_full_name(),
                 obj.time_created.strftime('%d %b %Y'))
         }
