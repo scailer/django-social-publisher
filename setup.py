@@ -14,6 +14,11 @@ user content to social nets API format.
 For writing you own haandlers, see examples in source code.
 """
 
+PY3 = sys.version_info[0] == 3
+BASE_DIR = os.path.dirname(__file__)
+REQUIREMENTS = json.load(
+    open(os.path.join(BASE_DIR, 'social_publisher', 'requirements.json'), 'r'))
+
 setup(
     name='django-social-publisher',
     version='0.3.0',
@@ -52,4 +57,6 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Topic :: Software Development :: Libraries :: Python Modules'
     ),
+
+    extras_require=REQUIREMENTS.get(PY3 and 'py3' or 'py2'),
 )

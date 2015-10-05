@@ -35,4 +35,4 @@ test_project/env3/
 test_project/social_publisher
 dist/*
 *.egg-info/*
-*.json
+*data.json
