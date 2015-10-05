@@ -14,7 +14,7 @@ For writing you own haandlers, see examples in source code.
 
 setup(
     name='django-social-publisher',
-    version='0.2.6',
+    version='0.3.0',
     author='Dmitriy Vlasov',
     author_email='scailer@russia.ru',
 
@@ -45,6 +45,9 @@ setup(
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
         'Topic :: Software Development :: Libraries :: Python Modules'
     ),
 )

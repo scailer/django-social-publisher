@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import unicode_literals
+
 from django.conf import settings
 from social_auth.backends.contrib.vk import VKOAuth2Backend, VKOAuth2
 

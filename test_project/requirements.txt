@@ -4,5 +4,7 @@ sorl-thumbnail
 django-social-publisher
 
 git+https://github.com/michaelhelmick/requests-facebook.git
+git+https://github.com/scailer/pytumblr.git@diana/python-3-support
+odnoklassniki
 twython
 vk

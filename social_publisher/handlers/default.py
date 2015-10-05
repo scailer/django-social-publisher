@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import unicode_literals
+
+import six
 import traceback
+
 from django.core.mail import mail_admins
 from social_publisher.misc import logger
 
@@ -11,7 +15,7 @@ class DefaultHandler(object):
         self.context = context
 
     def pre_handle(self, obj, comment):
-        return {'text': comment or str(obj)}
+        return {'text': comment or six.text_type(obj)}
 
     def post_handle(self, result, data, obj, comment):
         return 'http://example.com/', result

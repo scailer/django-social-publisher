@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import unicode_literals
+
+import six
+
 from social_publisher.handlers import default
 from sorl.thumbnail import get_thumbnail
 
 
 class FacebookMessageHandler(default.DefaultHandler):
     def pre_handle(self, obj, comment):
-        return {'message': comment or str(obj)}
+        return {'message': comment or six.text_type(obj)}
 
     def post_handle(self, result, data, obj, comment):
         return 'http://facebook.com/{}'.format(result['id']), result
