@@ -2,7 +2,9 @@
 
 from __future__ import unicode_literals
 
-from setuptools import setup
+import sys
+
+from setuptools import setup, find_packages
 
 DESCRIPTION = """
 Extension for python-social-auth [https://pypi.python.org/pypi/python-social-auth/]
@@ -14,10 +16,30 @@ user content to social nets API format.
 For writing you own haandlers, see examples in source code.
 """
 
+
+REQUIREMENTS = {
+    "py3": {
+        "facebook": ["requests-facebook==0.2.1"],
+        "tumblr": ["PyTumblr==0.1.0"],
+        "vk": ["vk==1.5.3"],
+        "twitter": ["twython==3.2.0"],
+        "ok": ["odnoklassniki"]
+    },
+    "py2": {
+        "facebook": ["requests-facebook==0.2.0"],
+        "tumblr": ["PyTumblr==0.0.6"],
+        "vk": ["vk==1.5.3"],
+        "twitter": ["twython==3.2.0"],
+        "ok": ["odnoklassniki"]
+    }
+}
+
+DEPENDENCY_LINKS = [
+    "https://github.com/michaelhelmick/requests-facebook.git#egg=requests-facebook-0.2.1",
+    "https://github.com/scailer/pytumblr.git@diana/python-3-support#egg=PyTumblr-0.1.0",
+]
+
 PY3 = sys.version_info[0] == 3
-BASE_DIR = os.path.dirname(__file__)
-REQUIREMENTS = json.load(
-    open(os.path.join(BASE_DIR, 'social_publisher', 'requirements.json'), 'r'))
 
 setup(
     name='django-social-publisher',
@@ -26,12 +48,7 @@ setup(
     author_email='scailer@russia.ru',
 
     include_package_data=True,
-    packages=[
-        'social_publisher',
-        'social_publisher.backends',
-        'social_publisher.handlers',
-        'social_publisher.auth'
-    ],
+    packages=find_packages(),
 
     url='https://github.com/scailer/django-social-publisher/',
     license='MIT license',
@@ -58,5 +75,6 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules'
     ),
 
+    dependency_links=DEPENDENCY_LINKS,
     extras_require=REQUIREMENTS.get(PY3 and 'py3' or 'py2'),
 )
