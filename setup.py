@@ -19,8 +19,8 @@ For writing you own haandlers, see examples in source code.
 
 REQUIREMENTS = {
     "py3": {
-        "facebook": ["requests-facebook==0.2.1"],
-        "tumblr": ["PyTumblr==0.1.0"],
+        "facebook": [],
+        "tumblr": [],
         "vk": ["vk==1.5.3"],
         "twitter": ["twython==3.2.0"],
         "ok": ["odnoklassniki"]
@@ -35,15 +35,15 @@ REQUIREMENTS = {
 }
 
 DEPENDENCY_LINKS = [
-    "https://github.com/michaelhelmick/requests-facebook.git#egg=requests-facebook-0.2.1",
-    "https://github.com/scailer/pytumblr.git@diana/python-3-support#egg=PyTumblr-0.1.0",
+    "https://github.com/michaelhelmick/requests-facebook.git",
+    "https://github.com/scailer/pytumblr.git@diana/python-3-support",
 ]
 
 PY3 = sys.version_info[0] == 3
 
 setup(
     name='django-social-publisher',
-    version='0.3.0',
+    version='0.3.8',
     author='Dmitriy Vlasov',
     author_email='scailer@russia.ru',
 
