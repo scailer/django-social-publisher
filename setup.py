@@ -19,8 +19,8 @@ For writing you own haandlers, see examples in source code.
 
 REQUIREMENTS = {
     "py3": {
-        "facebook": [],
-        "tumblr": [],
+        "facebook": ["requests-facebook-py3"],
+        "tumblr": ["Py3Tumblr"],
         "vk": ["vk==1.5.3"],
         "twitter": ["twython==3.2.0"],
         "ok": ["odnoklassniki"]
@@ -43,7 +43,7 @@ PY3 = sys.version_info[0] == 3
 
 setup(
     name='django-social-publisher',
-    version='0.3.8',
+    version='0.3.9',
     author='Dmitriy Vlasov',
     author_email='scailer@russia.ru',
 
