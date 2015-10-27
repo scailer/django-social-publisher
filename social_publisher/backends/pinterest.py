@@ -23,7 +23,7 @@ class PinterestBackend(base.BaseBackend):
 
         response = requests.post(
             'https://api.pinterest.com/v1/boards/',
-            data = {
+            data={
                 'access_token': access_token,
                 'name': board_name,
                 'description': board_name,
@@ -42,7 +42,7 @@ class PinterestBackend(base.BaseBackend):
                 'note': note,
                 'link': link,
             }
-            response = requests.put('https://api.pinterest.com/v1/pins/', data)
+            response = requests.post('https://api.pinterest.com/v1/pins/', data)
             return response.json()
 
         return _post
