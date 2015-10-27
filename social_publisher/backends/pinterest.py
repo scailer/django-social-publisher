@@ -12,8 +12,8 @@ class PinterestBackend(base.BaseBackend):
 
     def get_board(self, access_token, board_name):
         response = requests.get(
-            'https://api.pinterest.com/v1/me/boards/',
-            data={'access_token': access_token})
+            'https://api.pinterest.com/v1/me/boards/?access_token={}'.format(
+                access_token))
 
         data = response.json().get('data')
         board = [b for b in data if b.get('name') == board_name]
