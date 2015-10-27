@@ -1,4 +1,4 @@
 ipython
 django
 sorl-thumbnail
-django-social-publisher[vk,twitter,ok,facebook]==0.3.8
+django-social-publisher[vk,twitter,ok,facebook,tumblr]==0.3.9
