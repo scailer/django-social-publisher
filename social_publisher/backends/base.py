@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import unicode_literals
+
 from django.utils.module_loading import import_string as _load
 from social_publisher.exceptions import ExternalAPIError
 from social_publisher import conf
@@ -27,7 +29,7 @@ class BaseBackend(object):
         data = handler.pre_handle(obj, comment)
 
         try:
-            if isinstance(data, (str, unicode)):
+            if isinstance(data, str):
                 response = self.publisher(data)
 
             elif isinstance(data, dict):
@@ -47,7 +49,7 @@ class BaseBackend(object):
 
                 response = self.publisher(*args, **kwargs)
 
-        except self.exceptions, e:
+        except self.exceptions as e:
             handler.exception_handle(e, data=data, obj=obj, comment=comment)
             raise ExternalAPIError()
 

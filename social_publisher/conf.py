@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import unicode_literals
+
 from django.conf import settings
 
 PUBLISHER_DEBUG = getattr(settings, 'PUBLISHER_DEBUG', True)

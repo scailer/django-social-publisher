@@ -1,6 +1,4 @@
-django-social-publisher
-requests-facebook
-sorl-thumbnail
 ipython
-twython
-vk
+django
+sorl-thumbnail
+django-social-publisher[vk,twitter,ok,facebook,tumblr]==0.3.9

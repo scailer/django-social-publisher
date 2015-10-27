@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+
+from __future__ import unicode_literals
+
 import os
 from .secret import *
 
@@ -91,14 +95,25 @@ PUBLISHER_BACKENDS = (
     'social_publisher.backends.twitter.TwitterWithMediaBackend',
     'social_publisher.backends.facebook.FacebookBackend',
     'social_publisher.backends.facebook.FacebookPostImageBackend',
-#    'social_publisher.backends.vk.VKImageToWallBackend',
+    'social_publisher.backends.ok.OKBackend',
+    'social_publisher.backends.pinterest.PinterestBackend',
+    'social_publisher.backends.tumblr.TumblrBaseBackend',
+    'social_publisher.backends.tumblr.TumblrPhotoBackend',
+    'social_publisher.backends.vk.VKBackend',
+    'social_publisher.backends.vk.VKImageToWallBackend',
 )
+
 PUBLISHER_HANDLERS = {
     'twitter':              'social_publisher.handlers.twitter.TwitterHandler',
     'twitter_with_media':   'social_publisher.handlers.twitter.TwitterWithMediaHandler',
     'facebook':             'social_publisher.handlers.facebook.FacebookMessageHandler',
     'facebook_post_image':  'social_publisher.handlers.facebook.FacebookPhotoHandler',
-#    'vk_image_to_wall':     'social_publisher.handlers.vk.VKImageToWallHandler'
+    'tumblr':               'social_publisher.handlers.tumblr.TumblrPhotoHandler',
+    'tumblr_photo':         'social_publisher.handlers.tumblr.TumblrPhotoHandler',
+    'ok':                   'social_publisher.handlers.default.DefaultHandler',
+    'pinterest':            'social_publisher.handlers.default.DefaultHandler',
+    'vk':                   'social_publisher.handlers.default.DefaultHandler',
+    'vk_image_to_wall':     'social_publisher.handlers.vk.VKImageToWallHandler',
 }
 
 PUBLISHER_DEFAULT_HANDLER = 'social_publisher.handlers.default.DefaultHandler'

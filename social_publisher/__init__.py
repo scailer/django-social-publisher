@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import unicode_literals
+
 from social_publisher import conf
 
 if any('facebook' in x for x in conf.PUBLISHER_BACKENDS):

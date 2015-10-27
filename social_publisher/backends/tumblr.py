@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import unicode_literals
+
 from social_publisher import pytumblr
 from django.conf import settings
 from social_publisher.backends import base
