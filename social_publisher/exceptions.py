@@ -3,11 +3,11 @@
 from __future__ import unicode_literals
 
 
-class NoAccess(Exception):
+class ExternalAPIError(Exception):
     pass
 
 
-class ExternalAPIError(Exception):
+class AccessDenied(ExternalAPIError):
     pass
 
 

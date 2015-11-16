@@ -9,6 +9,7 @@ from social_publisher.backends import base
 class FacebookBackend(base.BaseBackend):
     name = 'facebook'
     auth_provider = 'facebook'
+    exceptions = (facebook.FacebookClientError, )
 
     def get_api(self, social_user, owner_id=None):
         api = facebook.GraphAPI(social_user.extra_data.get('access_token'))
