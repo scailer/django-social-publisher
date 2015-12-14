@@ -59,6 +59,7 @@ class VKImageToWallBackend(VKBackend):
                 photos_data = api.photos.saveWallPhoto(**upload_data)
                 attachments.append('photo{owner_id}_{id}'.format(**photos_data[0]))
 
+            del kwargs['files']
             kwargs['attachments'] = ','.join(attachments)
             response = api.wall.post(**kwargs)
 
