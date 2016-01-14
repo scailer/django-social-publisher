@@ -43,9 +43,9 @@ PY3 = sys.version_info[0] == 3
 
 setup(
     name='django-social-publisher',
-    version='0.4.5',
+    version='0.5.0',
     author='Dmitriy Vlasov',
-    author_email='scailer@russia.ru',
+    author_email='scailer@veles.biz',
 
     include_package_data=True,
     packages=find_packages(),

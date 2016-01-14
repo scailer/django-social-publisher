@@ -14,9 +14,13 @@ class BaseBackend(object):
 
     def __init__(self, social_user, context):
         self.context = context
+        self.social_user = social_user
         self.publisher = self.get_api_publisher(social_user)
 
     def get_api_publisher(self, social_user):
+        raise NotImplementedError('Implement in subclass')
+
+    def check(self, permission=None, social_user=None):
         raise NotImplementedError('Implement in subclass')
 
     def get_handler(self):

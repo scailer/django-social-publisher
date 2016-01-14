@@ -23,6 +23,14 @@ class TumblrBaseBackend(base.BaseBackend):
     def get_api_publisher(self, social_user):
         return self.get_api(social_user).create_text
 
+    def check(self, permission=None, social_user=None):
+        api = self.get_api(social_user or self.social_user)
+
+        try:
+            return bool(api.info().get('user'))
+        except Exception:
+            return False
+
 
 class TumblrPhotoBackend(TumblrBaseBackend):
     name = 'tumblr_photo'

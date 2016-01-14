@@ -23,6 +23,14 @@ class TwitterBackend(base.BaseBackend):
     def get_api_publisher(self, social_user):
         return self.get_api(social_user).update_status
 
+    def check(self, permission=None, social_user=None):
+        api = self.get_api(social_user or self.social_user)
+
+        try:
+            return bool(api.verify_credentials())
+        except Exception:
+            return False
+
 
 class TwitterWithMediaBackend(TwitterBackend):
     name = 'twitter_with_media'

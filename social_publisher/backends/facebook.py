@@ -39,6 +39,16 @@ class FacebookBackend(base.BaseBackend):
 
         return _post
 
+    def check(self, permission='publish_actions', social_user=None):
+        api = self.get_api(social_user or self.social_user)
+
+        try:
+            data = api.get('me/permissions').get('data', [])
+            perms = [d['permission'] for d in data if d['status'] == 'granted']
+            return permission in perms
+        except Exception:
+            return False
+
 
 class FacebookPostImageBackend(FacebookBackend):
     name = 'facebook_post_image'

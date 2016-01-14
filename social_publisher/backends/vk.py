@@ -32,6 +32,15 @@ class VKBackend(base.BaseBackend):
 
         return _post
 
+    def check(self, permission=8192, social_user=None):
+        api = self.get_api(social_user or self.social_user)
+
+        try:
+            perm_mask = int("{0:b}".format(api.getUserSettings()), 2)
+            return perm_mask & int("{0:b}".format(permission), 2) == permission
+        except Exception:
+            return False
+
 
 class VKImageToWallBackend(VKBackend):
     name = 'vk_image_to_wall'
