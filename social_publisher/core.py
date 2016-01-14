@@ -68,3 +68,15 @@ class PublisherCore(misc.Singleton):
         social_user = self._get_social_user(user, provider)
         backend = self.get_backend(social_user, provider, context=kwargs)
         return backend.publish(obj, comment)
+
+    def check(self, user, provider, permission, **kwargs):
+        '''
+            user - django User or UserSocialAuth instance
+            provider - name of publisher provider
+            permission - if backend maintains check permissions
+                            vk - binary mask in int format
+                            facebook - scope string
+        '''
+        social_user = self._get_social_user(user, provider)
+        backend = self.get_backend(social_user, provider, context=kwargs)
+        return backend.check(permission)

@@ -41,3 +41,6 @@ class PublisherForUserMixin(object):
 
     def publish_to(self, provider, obj, comment=None, **kw):
         return _core.publish(self, provider, obj, comment, **kw)
+
+    def check_for(self, provider, permission=None, **kw):
+        return _core.check(self, provider, permission, **kw)
