@@ -13,7 +13,7 @@ class PinterestAPI(object):
         self.token = access_token
 
     def __getattr__(self, name):
-        if name in ('get', 'delete')
+        if name in ('get', 'delete'):
             def _api(url, **kwargs):
                 url = '{}{}/?access_token={}'.format(self.URL, url, self.token)
                 getattr(requests, name)(url, **kwargs)
