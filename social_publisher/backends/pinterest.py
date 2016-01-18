@@ -68,7 +68,7 @@ class PinterestBackend(base.BaseBackend):
         return _post
 
     def check(self, permission=None, social_user=None):
-        api = self.get_api(social_user)
+        api = self.get_api(social_user or self.social_user)
 
         try:
             return api.get('me').ok
