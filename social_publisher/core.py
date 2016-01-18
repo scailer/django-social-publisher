@@ -77,8 +77,13 @@ class PublisherCore(misc.Singleton):
                             vk - binary mask in int format
                             facebook - scope string
         '''
-        social_user = self._get_social_user(user, provider)
-        if not social_user:
+        try:
+            social_user = self._get_social_user(user, provider)
+            if not social_user:
+                return False
+
+        except SocialUserDoesNotExist:
             return False
+
         backend = self.get_backend(social_user, provider, context=kwargs)
         return backend.check(permission)
