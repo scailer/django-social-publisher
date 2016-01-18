@@ -11,6 +11,7 @@ from social_publisher.backends import base
 class VKBackend(base.BaseBackend):
     name = 'vk'
     auth_provider = 'vk-oauth'
+    DEFAULT_PERMISSION_FOR_CHECK = 8192
 
     def get_api(self, social_user):
         return vk.API(access_token=social_user.extra_data.get('access_token'),
@@ -32,8 +33,9 @@ class VKBackend(base.BaseBackend):
 
         return _post
 
-    def check(self, permission=8192, social_user=None):
+    def check(self, permission=None, social_user=None):
         api = self.get_api(social_user or self.social_user)
+        permission = permission or self.DEFAULT_PERMISSION_FOR_CHECK
 
         try:
             perm_mask = int("{0:b}".format(api.getUserSettings()), 2)

@@ -10,6 +10,7 @@ class FacebookBackend(base.BaseBackend):
     name = 'facebook'
     auth_provider = 'facebook'
     exceptions = (facebook.FacebookClientError, )
+    DEFAULT_PERMISSION_FOR_CHECK = 'publish_actions'
 
     def get_api(self, social_user, owner_id=None):
         api = facebook.GraphAPI(social_user.extra_data.get('access_token'))
@@ -39,8 +40,9 @@ class FacebookBackend(base.BaseBackend):
 
         return _post
 
-    def check(self, permission='publish_actions', social_user=None):
+    def check(self, permission=None, social_user=None):
         api = self.get_api(social_user or self.social_user)
+        permission = permission or self.DEFAULT_PERMISSION_FOR_CHECK
 
         try:
             data = api.get('me/permissions').get('data', [])
